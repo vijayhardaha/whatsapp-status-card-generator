@@ -72,7 +72,7 @@ export const SettingsModal = ({ isOpen, setSettingsOpen }) => {
 				role="dialog"
 				aria-modal="true"
 				aria-labelledby="settings-modal-title"
-				className={`fixed bottom-0 left-0 right-0 flex h-full w-full transform items-center justify-center transition-all duration-100 sm:inset-0 sm:p-4 ${isOpen ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-1/2 opacity-0"}`}
+				className={`fixed bottom-0 left-0 right-0 flex w-full transform items-center justify-center transition-all duration-100 sm:inset-0 sm:h-full sm:p-4 ${isOpen ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-1/2 opacity-0"}`}
 			>
 				<div ref={modalRef} className="w-full rounded bg-white p-4 sm:w-[450px]">
 					<header className="mb-8 flex items-center justify-between border-b-[1px] border-stone-200 pb-2">
