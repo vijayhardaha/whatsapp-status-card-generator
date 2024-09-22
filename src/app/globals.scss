@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-// Root variables for font scaling and sizing
 :root {
 	--heading-font-scale: 1;
 	--base-font-size: 1rem;
@@ -11,7 +10,6 @@
 	--heading-line-height: 1.2;
 }
 
-// EasyMDE styles
 body .EasyMDEContainer .CodeMirror {
 	@apply rounded-md border border-gray-200 bg-white p-4;
 }
@@ -47,17 +45,16 @@ body .cm-s-easymde {
 	}
 }
 
-// Minimum height for scrollable areas
 .CodeMirror-scroll,
 .preview-min-height {
 	min-height: calc(100vh - 200px) !important;
 }
 
-// Preview box styles
 .previewbox {
 	@apply bg-white px-8 py-6 text-gray-900;
+	--font-size: var(--text-font-size, var(--base-font-size));
 	font-family: var(--preview-text-font) !important;
-	font-size: var(--text-font-size, var(--base-font-size));
+	font-size: var(--font-size);
 	line-height: calc(var(--font-size) * var(--base-line-height));
 
 	& > h1,
@@ -67,6 +64,16 @@ body .cm-s-easymde {
 		&:not(:first-child) {
 			@apply mt-8;
 		}
+	}
+
+	& h1,
+	& h2,
+	& h3,
+	& h4 {
+		--font-size: calc(var(--heading-font-size) * var(--heading-size) * var(--heading-font-scale));
+		font-family: var(--preview-heading-font) !important;
+		font-size: var(--font-size);
+		line-height: calc(var(--heading-line-height) * var(--font-size) * var(--heading-font-scale));
 	}
 
 	& h1 {
@@ -91,6 +98,7 @@ body .cm-s-easymde {
 
 	& p {
 		@apply mb-2 leading-relaxed;
+		margin-bottom: 0.35em;
 	}
 
 	& a {
@@ -107,7 +115,6 @@ body .cm-s-easymde {
 
 	& blockquote {
 		@apply mb-4 border-l-4 border-gray-300 pl-4 italic text-gray-600;
-		@apply rounded-none border-l-2 border-[#dd1399] font-normal not-italic;
 	}
 
 	& ul {
@@ -130,7 +137,26 @@ body .cm-s-easymde {
 		@apply overflow-auto rounded-md bg-gray-100 p-4;
 	}
 
+	& code {
+		@apply rounded-md bg-gray-100 px-1 text-[#dd1399];
+	}
+
+	& blockquote {
+		@apply rounded-none border-l-2 border-[#dd1399] font-normal not-italic;
+	}
+
+	& blockquote,
+	& pre {
+		@apply relative overflow-auto rounded-md bg-gray-100 p-4 py-2;
+
+		& p:last-child {
+			@apply mb-0;
+		}
+	}
+
 	& hr {
-		@apply my-3 w-full border-t border-gray-300 opacity-50;
+		@apply my-3 border-t border-gray-300; /* Light gray border */
+		@apply opacity-50; /* Slightly transparent */
+		@apply w-full; /* Full width */
 	}
 }
