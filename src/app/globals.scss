@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Root variables for font scaling and sizing
+:root {
+	--heading-font-scale: 1;
+	--base-font-size: 1rem;
+	--base-line-height: 1.675;
+	--heading-font-size: 1rem;
+	--heading-line-height: 1.2;
+}
+
+// EasyMDE styles
+body .EasyMDEContainer .CodeMirror {
+	@apply rounded-md border border-gray-200 bg-white p-4;
+}
+
+body .editor-statusbar {
+	@apply hidden;
+}
+
+body .cm-s-easymde {
+	font-family: var(--preview-text-font) !important;
+
+	.cm-header-1,
+	.cm-header-2,
+	.cm-header-3,
+	.cm-header-4 {
+		font-family: var(--preview-heading-font) !important;
+	}
+
+	.cm-header-1 {
+		@apply mb-4 text-4xl font-extrabold;
+	}
+
+	.cm-header-2 {
+		@apply mb-3 text-2xl font-bold;
+	}
+
+	.cm-header-3 {
+		@apply mb-2 text-xl font-bold;
+	}
+
+	.cm-header-4 {
+		@apply mb-4 text-lg font-bold;
+	}
+}
+
+// Minimum height for scrollable areas
+.CodeMirror-scroll,
+.preview-min-height {
+	min-height: calc(100vh - 200px) !important;
+}
+
+// Preview box styles
+.previewbox {
+	@apply bg-white px-8 py-6 text-gray-900;
+	font-family: var(--preview-text-font) !important;
+	font-size: var(--text-font-size, var(--base-font-size));
+	line-height: calc(var(--font-size) * var(--base-line-height));
+
+	& > h1,
+	& > h2,
+	& > h3,
+	& > h4 {
+		&:not(:first-child) {
+			@apply mt-8;
+		}
+	}
+
+	& h1 {
+		@apply mb-4 font-extrabold;
+		--heading-size: 2.25;
+	}
+
+	& h2 {
+		@apply mb-3 font-bold;
+		--heading-size: 1.5;
+	}
+
+	& h3 {
+		@apply mb-2 font-bold;
+		--heading-size: 1.25;
+	}
+
+	& h4 {
+		@apply mb-4 font-bold;
+		--heading-size: 1.125;
+	}
+
+	& p {
+		@apply mb-2 leading-relaxed;
+	}
+
+	& a {
+		@apply text-blue-500 underline;
+	}
+
+	& strong {
+		@apply font-bold text-[#dd2c38];
+	}
+
+	& em {
+		@apply italic text-[#c09c0c];
+	}
+
+	& blockquote {
+		@apply mb-4 border-l-4 border-gray-300 pl-4 italic text-gray-600;
+		@apply rounded-none border-l-2 border-[#dd1399] font-normal not-italic;
+	}
+
+	& ul {
+		@apply mb-2 list-disc pl-5;
+	}
+
+	& ol {
+		@apply mb-2 list-decimal pl-5;
+	}
+
+	& li {
+		@apply mb-1;
+	}
+
+	& code {
+		@apply rounded-md bg-gray-200 px-1;
+	}
+
+	& pre {
+		@apply overflow-auto rounded-md bg-gray-100 p-4;
+	}
+
+	& hr {
+		@apply my-3 w-full border-t border-gray-300 opacity-50;
+	}
+}

@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# WhatsApp Status Card Generator
+
+**WhatsApp Status Card Generator** is a web app built with **Next.js** and **Tailwind CSS** that allows users to create customizable cards with markdown text and download them as images. The app provides an iPhone 14-sized preview box, various font options, and settings to customize the appearance of the card.
+
+## Features
+
+- **Markdown Support**: Users can write text in markdown, which is converted to a styled HTML preview.
+- **Font Customization**: Choose from multiple Google Fonts to style the heading and body text.
+- **Settings**: Adjust font family, font size for heading and body text.
+- **Download Card**: Export the designed card as an image using the `dom-to-image` library.
+- **Responsive Design**: Optimized for mobile and desktop.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- **Node.js** (version 14 or higher)
+- **Yarn** or **npm** for package management
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/vijayhardaha/whatsapp-status-card-generator.git
+   cd whatsapp-status-card-generator
+   ```
+
+2. Install the dependencies:
+
+   ```bash
+   yarn install
+   # or
+   npm install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   yarn dev
+   # or
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) to view the app in your browser.
+
+### Build for Production
+
+To build the app for production:
 
 ```bash
-npm run dev
+yarn build
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will create an optimized build in the `.next` folder.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Write markdown text in the input box to preview it on the card.
+- Open the settings drawer to choose fonts and adjust the font sizes.
+- Once satisfied, click the "Download" button to save the card as an image.
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions are welcome! Please open an issue or submit a pull request if you'd like to contribute to the project.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT [License](LINCESE).
