@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import PropTypes from "prop-types";
-import { Range } from "react-range";
 
 /**
  * RangeSliderInput component allows users to select a range of values with custom styling.
@@ -18,6 +17,17 @@ import { Range } from "react-range";
  */
 const RangeSliderInput = ({ min, max, step, value, setValue, ...props }) => {
 	const [values, setValues] = useState([value]);
+	const [Range, setRange] = useState(null); // State to hold the Range component reference
+
+	// Dynamically import Range when the component mounts
+	useEffect(() => {
+		const loadRange = async () => {
+			const { Range: RangeComponent } = await import("react-range");
+			setRange(() => RangeComponent);
+		};
+
+		loadRange();
+	}, []);
 
 	/**
 	 * Formats a numeric value to a string with up to three decimal places, avoiding unnecessary trailing zeros.
@@ -28,6 +38,11 @@ const RangeSliderInput = ({ min, max, step, value, setValue, ...props }) => {
 	const formatValue = (value) => {
 		return Number(value).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 3 });
 	};
+
+	// If Range is not loaded yet, return a loading message
+	if (!Range) {
+		return <div>Loading slider...</div>;
+	}
 
 	return (
 		<Range

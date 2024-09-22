@@ -29,28 +29,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<head>
-				{/* Favicon for general browsers */}
-				<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-				{/* Apple Touch Icon for iOS devices */}
-				<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-
-				{/* Icons for Android Chrome and other devices */}
-				<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
-				<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-
-				{/* Additional favicon sizes for compatibility */}
-				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-
-				{/* Link to the web app manifest file */}
-				<link rel="manifest" href="/manifest.json" />
-
-				{/* Theme color for browsers that support it */}
-				<meta name="theme-color" content="#25D366" />
-			</head>
-
 			<body className={`${montserrat.className} bg-gray-100 text-gray-900 antialiased`}>
 				<div className="min-h-screen">
 					<div className="container mx-auto">

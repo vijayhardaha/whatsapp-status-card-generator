@@ -1,3 +1,5 @@
+"use client";
+
 import MarkdownIt from "markdown-it";
 import PropTypes from "prop-types";
 

@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
+"use client";
+
+import React, { useEffect, useMemo, useState } from "react";
 
 import "easymde/dist/easymde.min.css";
 import PropTypes from "prop-types";
-import SimpleMDE from "react-simplemde-editor";
 
 /**
  * MarkdownEditor component for editing markdown text.
@@ -13,6 +14,18 @@ import SimpleMDE from "react-simplemde-editor";
  * @returns {JSX.Element} The rendered MarkdownEditor component.
  */
 export const MarkdownEditor = ({ markdown, setMarkdown }) => {
+	const [SimpleMDE, setSimpleMDE] = useState(null); // State to hold the SimpleMDE reference
+
+	// Dynamically import SimpleMDE when the component mounts
+	useEffect(() => {
+		const loadSimpleMDE = async () => {
+			const { default: SimpleMDEEditor } = await import("react-simplemde-editor");
+			setSimpleMDE(() => SimpleMDEEditor);
+		};
+
+		loadSimpleMDE();
+	}, []);
+
 	// Memoized options for SimpleMDE editor to avoid unnecessary re-renders.
 	const autofocusNoSpellcheckerOptions = useMemo(() => {
 		return {
@@ -22,6 +35,11 @@ export const MarkdownEditor = ({ markdown, setMarkdown }) => {
 			toolbar: false,
 		};
 	}, []);
+
+	// If SimpleMDE is not loaded yet, return a loading message
+	if (!SimpleMDE) {
+		return <div>Loading editor...</div>;
+	}
 
 	return (
 		<div className="w-full">
