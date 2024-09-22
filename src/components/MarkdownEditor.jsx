@@ -47,7 +47,7 @@ export const MarkdownEditor = ({ markdown, setMarkdown }) => {
 				value={markdown}
 				onChange={(value) => {
 					setMarkdown(value);
-					localStorage.setItem("markdownContent", value); // Store markdown in local storage
+					localStorage.setItem("markdownContent", value);
 				}}
 				options={autofocusNoSpellcheckerOptions}
 			/>
