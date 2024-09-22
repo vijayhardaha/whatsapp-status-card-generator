@@ -43,7 +43,14 @@ export const MarkdownEditor = ({ markdown, setMarkdown }) => {
 
 	return (
 		<div className="w-full">
-			<SimpleMDE value={markdown} onChange={setMarkdown} options={autofocusNoSpellcheckerOptions} />
+			<SimpleMDE
+				value={markdown}
+				onChange={(value) => {
+					setMarkdown(value);
+					localStorage.setItem("markdownContent", value); // Store markdown in local storage
+				}}
+				options={autofocusNoSpellcheckerOptions}
+			/>
 		</div>
 	);
 };

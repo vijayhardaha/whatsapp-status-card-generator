@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ActionButtons from "@/components/ActionButtons";
 import { CardPreview } from "@/components/CardPreview";
@@ -14,14 +14,23 @@ import { SettingsModal } from "@/components/SettingsModal";
  * @returns {JSX.Element} The rendered page component.
  */
 const Page = () => {
-	// State to manage the markdown content.
-	const [markdown, setMarkdown] = useState("# Status Card" + "\n\n" + "write your content here.");
+	// State to manage the markdown content, loading from localStorage if available.
+	const [markdown, setMarkdown] = useState(() => {
+		// Check if there's markdown content in localStorage
+		const storedMarkdown = localStorage.getItem("markdownContent");
+		return storedMarkdown ? storedMarkdown : "# Status Card\n\nwrite your content here.";
+	});
 
 	// State to toggle between preview mode and editor mode.
 	const [previewMode, setPreviewMode] = useState(false);
 
 	// State to manage the visibility of the settings modal.
 	const [isModalOpen, setModalOpen] = useState(false);
+
+	// Effect to store markdown content in localStorage whenever it changes
+	useEffect(() => {
+		localStorage.setItem("markdownContent", markdown);
+	}, [markdown]);
 
 	return (
 		<div className="relative grow">
